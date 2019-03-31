@@ -23,7 +23,11 @@
         :key="card.id"
         :name="card.name"
         :imageUrl="card.imageUrl"
+        :id="card.id"
       />
+    </div>
+    <div class="no-result" v-show="isSearchResult">
+      <h1>Sorry could not find your card, try a different name.</h1>
     </div>
   </div>
 </template>
@@ -40,6 +44,7 @@ export default {
       isMenuToggled: false,
       searchInput: '',
       cards: [],
+      isSearchResult: false,
       searchResult: [],
     };
   },
@@ -57,6 +62,11 @@ export default {
         this.searchResult = this.cards;
       }
       this.searchResult = this.cards.filter(card => card.name.toLowerCase().includes(this.searchInput));
+      if (this.searchResult.length === 0) {
+        this.isSearchResult = true;
+      } else if (this.searchResult.length > 0) {
+        this.isSearchResult = false;
+      };
     },
   },
   beforeCreate: function() {
@@ -154,5 +164,12 @@ export default {
         transform: scale(0.96)
       &:focus
         outline:none
-  .card-container
+  .no-result
+    width: 80%
+    max-width: 300px
+    margin: 0 auto
+    display: block
+    h1
+      font-size: 1.2rem
+      text-align: center
 </style>

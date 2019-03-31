@@ -3,14 +3,14 @@ Vue.component('BaseCard', {
     <div class="card">
       <h1 class="card--name">{{ name }}</h1>
       <img :src="imageUrl" alt="card image">
-      <button class="card--button">View more</button>
+      <router-link v-bind:to="'/CardDetails/' + id" class="card--button" tag="button">View more</router-link>
     </div>
   </template>
 
   <script>
   export default {
     props: [
-      'name', 'imageUrl'
+      'name', 'imageUrl', 'id',
     ],
   }
   </script>
@@ -46,6 +46,5 @@ Vue.component('BaseCard', {
           transform: scale(0.96)
         &:focus
           outline:none
-
   </style>
 })

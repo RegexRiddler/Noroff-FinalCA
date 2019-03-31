@@ -17,6 +17,11 @@ export default new Router({
       component: () => import('@/views/CardSearch.vue'),
     },
     {
+      path: '/CardDetails/:id',
+      name: 'CardDetails',
+      component: () => import('@/views/CardDetails.vue'),
+    },
+    {
       path: '*',
       redirect: '/',
     },
