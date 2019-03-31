@@ -20,8 +20,7 @@ In order to serve this project to your browser run:
 ```bash
 npm start
 ```
-Then open http://localhost:8080 in your browser.
-You can sign in with:
+Then open http://localhost:8080 in your browser and sign in with:
 ```bash
 Username: demo
 Password: 1234
