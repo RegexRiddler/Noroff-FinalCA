@@ -8,30 +8,43 @@
         <h1>Menu</h1>
         <ul>
           <li><router-link to="CardSearch">Card Search</router-link></li>
-          <li><router-link to="#">About</router-link></li>
-          <li><router-link to="#">Contact</router-link></li>
+          <li><router-link to="About">About</router-link></li>
+          <li><router-link to="Contact">Contact</router-link></li>
           <li><router-link to="Home">Sign Out</router-link></li>
         </ul>
       </nav>
     </header>
     <form class="card-search">
-      <input class="card-search--input" type="text" placeholder="Search by name" v-model="searchInput">
-      <button class="card-search--button" @click.prevent="cardSearch">search</button>
+      <input class="card-search--input" type="text" placeholder="Search card by name" v-model="searchInput">
+      <button class="card-search--button" @click.prevent="cardSearch"><i class="fas fa-search"></i></button>
     </form>
+    <div class="card-container">
+      <BaseCard v-for="card in searchResult" 
+        :key="card.id"
+        :name="card.name"
+        :imageUrl="card.imageUrl"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import BaseCard from '@/components/BaseCard.vue';
 export default {
   name: 'CardSearch',
+  components: {
+    BaseCard,
+  },
   data() {
     return {
       isMenuToggled: false,
       searchInput: '',
+      cards: [],
+      searchResult: [],
     };
   },
   methods: {
-    toggleMenu() {
+    toggleMenu: function() {
       if (!this.isMenuToggled) {
         document.querySelector('.header--navigation').style.display = 'block';
       } else {
@@ -39,14 +52,25 @@ export default {
       }
       this.isMenuToggled = !this.isMenuToggled;
     },
-    cardSearch() {
-      console.log('Searching');
+    cardSearch: function() {
+      if (this.searchInput == '') {
+        this.searchResult = this.cards;
+      }
+      this.searchResult = this.cards.filter(card => card.name.toLowerCase().includes(this.searchInput));
     },
   },
-  beforeCreate: () => {
+  beforeCreate: function() {
     if (!sessionStorage.getItem('AuthToken')) {
       this.$router.push('/');
     }
+  },
+  beforeMount: function() {
+    const api = 'https://api.magicthegathering.io/v1/cards';
+    const corsProxy = 'https://corsanywhereproxy.herokuapp.com/';
+    fetch(corsProxy + api)
+      .then(response => response.json())
+      .then(data => this.cards = this.searchResult = data.cards)
+      .catch(error => console.log(error));
   },
 };
 </script>
@@ -101,8 +125,9 @@ export default {
     width: 80vw
     max-width: 300px
     margin: 1rem auto
+    display: flex
     &--input
-      width: auto
+      width: 100%
       max-width: 300px
       border: 1px solid #63DFCA
       border-radius: 5px
@@ -129,5 +154,5 @@ export default {
         transform: scale(0.96)
       &:focus
         outline:none
-
+  .card-container
 </style>

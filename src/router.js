@@ -8,12 +8,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('@/views/Home.vue'),
+      name: 'LandingPage',
+      component: () => import('@/views/LandingPage.vue'),
     },
     {
-      path: '/cardSearch',
-      name: 'card-search',
+      path: '/CardSearch',
+      name: 'CardSearch',
       component: () => import('@/views/CardSearch.vue'),
     },
     {

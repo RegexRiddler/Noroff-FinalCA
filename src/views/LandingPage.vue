@@ -26,7 +26,9 @@
       </div>
       <!-- Sign in panel -->
       <div class="sign-in-panel">
-        <button class="back-button button button__ghosted" @click="showStartPanel"><i class="[ fas fa-chevron-left ]"></i>go back</button>
+        <button class="back-button button button__ghosted" @click="showStartPanel">
+          <i class="[ fas fa-chevron-left ]"></i>go back
+        </button>
         <h1>Sign in using</h1>
         <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
         <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
@@ -44,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'LandingPage',
   data() {
     return {
       newUser: {
