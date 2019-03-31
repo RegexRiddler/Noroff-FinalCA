@@ -1,4 +1,3 @@
-Vue.component('BaseCard', {
   <template>
     <div class="card">
       <h1 class="card--name">{{ name }}</h1>
@@ -9,6 +8,7 @@ Vue.component('BaseCard', {
 
   <script>
   export default {
+    name: 'BaseCard',
     props: [
       'name', 'imageUrl', 'id',
     ],
@@ -47,4 +47,3 @@ Vue.component('BaseCard', {
         &:focus
           outline:none
   </style>
-})

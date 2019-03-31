@@ -1,6 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import LandingPage from '@/views/LandingPage.vue';
+import CardSearch from '@/views/CardSearch.vue';
+import CardDetails from '@/views/CardDetails.vue';
+import About from '@/views/About.vue';
+
 Vue.use(Router);
 
 export default new Router({
@@ -8,18 +13,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'LandingPage',
-      component: () => import('@/views/LandingPage.vue'),
+      name: 'landing-page',
+      component: LandingPage,
     },
     {
       path: '/CardSearch',
-      name: 'CardSearch',
-      component: () => import('@/views/CardSearch.vue'),
+      name: 'card-search',
+      component: CardSearch,
     },
     {
       path: '/CardDetails/:id',
-      name: 'CardDetails',
-      component: () => import('@/views/CardDetails.vue'),
+      name: 'card-details',
+      component: CardDetails,
+    },
+    {
+      path: '/About',
+      name: 'about',
+      component: About,
     },
     {
       path: '*',

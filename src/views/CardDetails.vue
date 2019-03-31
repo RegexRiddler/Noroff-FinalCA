@@ -6,11 +6,10 @@
 
 <script>
 export default {
-  name: CardDetails,
-}
+  name: 'CardDetails',
+};
 </script>
 
 <style lang="sass" scoped>
 
 </style>
-
