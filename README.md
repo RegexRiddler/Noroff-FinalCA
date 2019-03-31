@@ -1,5 +1,6 @@
 # Vue MTG Card Search
 ## A simple Vue project to search MTG cards
+### Note: Styling only optimized for mobile.
 
 ### License
 Released under the MIT license - http://opensource.org/licenses/MIT
