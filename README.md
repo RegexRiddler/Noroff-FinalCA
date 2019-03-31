@@ -21,8 +21,12 @@ In order to serve this project to your browser run:
 npm start
 ```
 Then open http://localhost:8080 in your browser.
-And provide username: demo and password: 1234 in order to sign in.
-If you register a new user the demo user will be overwritten until you local storage is deleted.
+You can sign in with:
+```bash
+Username: demo
+Password: 1234
+```
+Note: If you register a new user the demo user will be overwritten until you local storage is deleted.
 
 
 That's it! You have successfully installed the angular-dashboard project.
