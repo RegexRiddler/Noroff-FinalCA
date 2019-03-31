@@ -1,29 +1,28 @@
-# course-assignment
+# Vue MTG Card Search
+## A simple Vue project to search MTG cards
 
-## Project setup
-```
-yarn install
-```
+### License
+Released under the MIT license - http://opensource.org/licenses/MIT
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## Installation
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+### Step 1: Download project
 
-### Run your tests
-```
-yarn run test
+First download the files, everything you need is located in the project folder.
+change your terminal/command line working directory to the root of the project folder then run: 
+```bash
+npm install
 ```
 
-### Lints and fixes files
-```
-yarn run lint
-```
+### Step 2: Start local server
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+In order to serve this project to your browser run:
+```bash
+npm start
+```
+Then open http://localhost:8080 in your browser.
+And provide username: demo and password: 1234 in order to sign in.
+If you register a new user the demo user will be overwritten until you local storage is deleted.
+
+
+That's it! You have successfully installed the angular-dashboard project.
