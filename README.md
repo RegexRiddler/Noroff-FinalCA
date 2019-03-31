@@ -28,4 +28,4 @@ Password: 1234
 Note: If you register a new user the demo user will be overwritten until you local storage is deleted.
 
 
-That's it! You have successfully installed the angular-dashboard project.
+That's it! You have successfully installed the MTG Card Search project.
