@@ -47,7 +47,7 @@ export default {
   },
   beforeCreate: () => {
     if (!sessionStorage.getItem('AuthToken')) {
-      this.$router.push('/')
+      this.$router.push('/');
     }
   },
 };
@@ -66,7 +66,6 @@ export default {
     transform: translate(-50%, -50%)
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
     display: flex
-
   .overlay-container
     width: 50%
     height: 100%
@@ -76,20 +75,16 @@ export default {
     position: absolute
     top: 0
     left: 0
-
     &.overlay-container-active
       transform: translateX(100%)
-
   .overlay
     background: linear-gradient(to bottom right, #ff4b2b, #ff416c)
     display: flex
     width: 200%
     height: 100%
     transition: all 0.5s ease-in-out
-
     &.overlay-active
       transform: translateX(-50%)
-
   .overlay-panel
     width: 50%
     height: 100%
@@ -98,7 +93,6 @@ export default {
     align-items: center
     justify-content: center
     flex-direction: column
-
   .overlay-panel-register-button, .overlay-panel-sign-in-button
     background-color: #EAEAEA
     padding: 10px 16px
@@ -108,14 +102,10 @@ export default {
     font-family: sans-serif
     cursor: pointer
     transition: 0.2s ease-in-out
-
     &:hover
       transform: scale(1.05)
-
     &:active
       transform: scale(0.95)
-
     &:focus
       outline: none
-
 </style>

@@ -45,7 +45,7 @@
 <script>
 export default {
   name: 'Home',
-  data () {
+  data() {
     return {
       newUser: {
         firstName: '',
@@ -58,11 +58,11 @@ export default {
         username: '',
         password: '',
       },
-    }
+    };
   },
   beforeCreate: () => {
     if (!localStorage.getItem('Username') && !localStorage.getItem('Password')) {
-      localStorage.setItem('Firstname', 'demo user')
+      localStorage.setItem('Firstname', 'demo user');
       localStorage.setItem('Username', 'demo');
       localStorage.setItem('Password', '1234');
     }
@@ -70,16 +70,16 @@ export default {
   methods: {
     showStartPanel: function () {
       document.querySelector('.overflow-container').style.top = '-100vh';
-      document.querySelector('.register-panel').style.opacity = '0'; 
-      document.querySelector('.sign-in-panel').style.opacity = '0'; 
+      document.querySelector('.register-panel').style.opacity = '0';
+      document.querySelector('.sign-in-panel').style.opacity = '0';
     },
     showRegisterPanel: function () {
       document.querySelector('.overflow-container').style.top = '0';
-      document.querySelector('.register-panel').style.opacity = '1'; 
+      document.querySelector('.register-panel').style.opacity = '1';
     },
     showSignInPanel: function () {
       document.querySelector('.overflow-container').style.top = '-200vh';
-      document.querySelector('.sign-in-panel').style.opacity = '1'; 
+      document.querySelector('.sign-in-panel').style.opacity = '1';
     },
     validateRegisterForm: function () {
       if (this.newUser.password.length < 6) {
@@ -91,7 +91,7 @@ export default {
         localStorage.setItem('Username', this.newUser.username);
         localStorage.setItem('Password', this.newUser.password);
         sessionStorage.setItem('AuthToken', 'sa6d456sd4a4ad6s');
-        this.$router.push('cardSearch')
+        this.$router.push('cardSearch');
       }
     },
     validateSignInForm: function () {
@@ -101,7 +101,7 @@ export default {
         console.log('Password is incorrect');
       } else {
         sessionStorage.setItem('AuthToken', 'sa6d456sd4a4ad6s');
-        this.$router.push('cardSearch')
+        this.$router.push('cardSearch');
       }
     },
   },
@@ -114,11 +114,9 @@ export default {
     font-weight: bold
     font-size: 28px
     margin: 0.6rem 0
-  
   h2
     font-size: 16px
     margin: 0.6rem 0
-  
   .button
     border: 1px solid #63DFCA
     border-radius: 100px
@@ -146,13 +144,11 @@ export default {
       padding: 0.6rem 1.8rem
       margin-top: 0.6rem
       color: #EAEAEA
-  
   .back-button
     margin: 0
     display: block
     i
       margin-right: 0.4rem
-
   form
     display: flex
     align-items: center
@@ -175,21 +171,18 @@ export default {
       &:invalid
         box-shadow: none
         border-left-color: #FF5300
-
   .social-icon
     font-size: 1.8rem
     color: #374B66
     cursor: pointer
     &:first-of-type
       margin-right: 0.6rem
-
   // Component wrapper / root container //
   .component-wrapper
     height: 100vh
     widht: 100vw
     overflow: hidden
     text-align: center
-
   // Overflow container //
   .overflow-container
       height: 300vh
@@ -197,7 +190,6 @@ export default {
       position: relative
       top: -100vh
       transition: all 0.4s ease
-
   // Start panel //
   .start-panel
     height: 100vh
@@ -220,11 +212,11 @@ export default {
     &--button
       width: 80%
       max-width: 300px
+      padding-top: 0.6rem
       margin: 0 auto
       margin-bottom: 1rem
       display: block
-
-  // Sign in and register panel common traits // 
+  // Sign in and register panel common traits //
   .sign-in-panel, .register-panel
     height: 100vh
     width: 100vw
@@ -233,7 +225,6 @@ export default {
     color: #374B66
     opacity: 0
     transition: all 1500ms ease
-
   // Sign in panel //
   .sign-in-panel--password-reset
     font-size: 14px
