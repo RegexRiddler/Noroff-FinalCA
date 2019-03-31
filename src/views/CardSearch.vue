@@ -1,48 +1,46 @@
 <template>
-  <div class="outer-container">
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel">
-          <h1>New User?</h1>
-          <h3>Register now and join the fun!</h3>
-          <span class="overlay-panel-register-button" @click="formToggle()">Create Account</span>
-        </div>
-        <div class="overlay-panel">
-          <h1>Registered User?</h1>
-          <h3>Sign in with your username and password</h3>
-          <span class="overlay-panel-sign-in-button" @click="formToggle()">Sign in</span>
-        </div>
-      </div>
-    </div>
+  <div class="component-wrapper">
+    <header class="header">
+      <img class="header--logo" src="./../assets/mtg-logo.svg" alt="magic the gathering card search logo">
+      <i class="[ fas fa-bars ] header--menu-icon" @click="toggleMenu"></i>
+      <nav class="header--navigation">
+        <i class="[ fas fa-times ]" @click="toggleMenu"></i>
+        <h1>Menu</h1>
+        <ul>
+          <li><router-link to="CardSearch">Card Search</router-link></li>
+          <li><router-link to="#">About</router-link></li>
+          <li><router-link to="#">Contact</router-link></li>
+          <li><router-link to="Home">Sign Out</router-link></li>
+        </ul>
+      </nav>
+    </header>
+    <form class="card-search">
+      <input class="card-search--input" type="text" placeholder="Search by name" v-model="searchInput">
+      <button class="card-search--button" @click.prevent="cardSearch">search</button>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
   name: 'CardSearch',
-  components: {
-  },
   data() {
     return {
-      isSignInFormToggeled: true,
+      isMenuToggled: false,
+      searchInput: '',
     };
   },
   methods: {
-    formToggle() {
-      const overlayContainer = document.querySelector('.overlay-container');
-      const overlay = document.querySelector('.overlay');
-      if (this.isSignInFormToggeled) {
-        overlayContainer.classList.add('overlay-container-active');
-        overlay.classList.add('overlay-active');
-        document.querySelector('.register-form').style.opacity = 0;
-        document.querySelector('.sign-in-form').style.opacity = 1;
+    toggleMenu() {
+      if (!this.isMenuToggled) {
+        document.querySelector('.header--navigation').style.display = 'block';
       } else {
-        overlayContainer.classList.remove('overlay-container-active');
-        overlay.classList.remove('overlay-active');
-        document.querySelector('.register-form').style.opacity = 1;
-        document.querySelector('.sign-in-form').style.opacity = 0;
+        document.querySelector('.header--navigation').style.display = 'none';
       }
-      this.isSignInFormToggeled = !this.isSignInFormToggeled;
+      this.isMenuToggled = !this.isMenuToggled;
+    },
+    cardSearch() {
+      console.log('Searching');
     },
   },
   beforeCreate: () => {
@@ -54,58 +52,82 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  .outer-container
-    background-color: #EAEAEA
-    width: 750px
-    height: 400px
-    border-radius: 20px
-    overflow: hidden
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
-    display: flex
-  .overlay-container
-    width: 50%
-    height: 100%
-    overflow: hidden
-    transition: all 0.4s ease-in-out
-    display: block
-    position: absolute
-    top: 0
-    left: 0
-    &.overlay-container-active
-      transform: translateX(100%)
-  .overlay
-    background: linear-gradient(to bottom right, #ff4b2b, #ff416c)
-    display: flex
-    width: 200%
-    height: 100%
-    transition: all 0.5s ease-in-out
-    &.overlay-active
-      transform: translateX(-50%)
-  .overlay-panel
-    width: 50%
-    height: 100%
-    text-align: center
+  .header
+    width: 100%
+    padding: 1rem
+    background-color: #1A2B3E
     display: flex
     align-items: center
-    justify-content: center
-    flex-direction: column
-  .overlay-panel-register-button, .overlay-panel-sign-in-button
-    background-color: #EAEAEA
-    padding: 10px 16px
-    border-radius: 5px
-    color: #FF274A
-    text-transform: uppercase
-    font-family: sans-serif
-    cursor: pointer
-    transition: 0.2s ease-in-out
-    &:hover
-      transform: scale(1.05)
-    &:active
-      transform: scale(0.95)
-    &:focus
-      outline: none
+    justify-content: space-between
+    &--logo
+      height: 12vh
+    &--menu-icon
+      font-size: 2.5rem
+      color: #EAEAEA
+    &--navigation
+      height: 100vh
+      width: 60vw
+      max-width: 180px
+      position: absolute
+      top: 0
+      right: 0
+      background-color: #374B66
+      color: #63DFCA
+      text-align: right
+      padding: 1.8rem 1rem
+      display: none
+      transition: all 0.3s ease-in-out
+      i
+        font-size: 2.5rem
+        margin-bottom: 1rem
+        color: #EAEAEA
+        cursor: pointer
+      h1
+        font-weight: bold
+        margin-bottom: 1rem
+        color: #EAEAEA
+      li
+        margin-bottom: 0.8rem
+        &:last-of-type
+          color: #FF5300
+      a
+        text-decoration: none
+        color: inherit
+        transition: color 0.1s ease
+        font-size: 1.2rem
+        &:hover
+          color: #EAEAEA
+  .card-search
+    width: 80vw
+    max-width: 300px
+    margin: 1rem auto
+    &--input
+      width: auto
+      max-width: 300px
+      border: 1px solid #63DFCA
+      border-radius: 5px
+      background-color: transparent
+      color: #1A2B3E
+      padding: 0.4rem 0.8rem
+      transition: border-color 400ms ease-out
+    &--button
+      border: 1px solid #63DFCA
+      border-radius: 5px
+      background-color: #63DFCA
+      margin-left: 0.2rem
+      padding: 0.4rem 0.8rem
+      color: #374B66
+      font-size: 12px
+      font-weight: bold
+      letter-spacing: 1px
+      text-transform: uppercase
+      cursor: pointer
+      transition: all 100ms ease-in
+      &:hover
+        transform: scale(1.02)
+      &:active
+        transform: scale(0.96)
+      &:focus
+        outline:none
+
 </style>

@@ -18,7 +18,7 @@
       </div>
       <!-- Start panel -->
       <div class="start-panel">
-        <img class="start-panel--logo" src="@/assets/mtg-logo.svg" alt="magic the gathering card search">
+        <img class="start-panel--logo" src="@/assets/mtg-logo.svg" alt="magic the gathering card search logo">
         <div class="start-panel--button-container">
           <button class="start-panel--button button button__ghosted button__wide" @click="showRegisterPanel">register</button>
           <button class="start-panel--button button button__wide" @click="showSignInPanel">sign in</button>
@@ -68,20 +68,20 @@ export default {
     }
   },
   methods: {
-    showStartPanel: function () {
+    showStartPanel() {
       document.querySelector('.overflow-container').style.top = '-100vh';
       document.querySelector('.register-panel').style.opacity = '0';
       document.querySelector('.sign-in-panel').style.opacity = '0';
     },
-    showRegisterPanel: function () {
+    showRegisterPanel() {
       document.querySelector('.overflow-container').style.top = '0';
       document.querySelector('.register-panel').style.opacity = '1';
     },
-    showSignInPanel: function () {
+    showSignInPanel() {
       document.querySelector('.overflow-container').style.top = '-200vh';
       document.querySelector('.sign-in-panel').style.opacity = '1';
     },
-    validateRegisterForm: function () {
+    validateRegisterForm() {
       if (this.newUser.password.length < 6) {
         console.log('Password is to short');
       } else if (this.newUser.password !== this.newUser.repeatedPassword) {
@@ -94,7 +94,7 @@ export default {
         this.$router.push('cardSearch');
       }
     },
-    validateSignInForm: function () {
+    validateSignInForm() {
       if (this.returningUser.username !== localStorage.getItem('Username')) {
         console.log('Username is incorrect');
       } else if (this.returningUser.password !== localStorage.getItem('Password')) {
